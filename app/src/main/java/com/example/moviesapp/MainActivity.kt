@@ -2,6 +2,7 @@ package com.example.moviesapp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -68,7 +69,9 @@ fun MainContent(movieList: List<String> = listOf(
     Column(modifier = Modifier.padding(12.dp)) {
         LazyColumn {
             items(items = movieList){
-                MovieRow(movie = it)
+                MovieRow(movie = it){
+                    movie -> Log.d("Movie",movie)
+                }
             }
         }
     }
