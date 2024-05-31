@@ -49,7 +49,7 @@ fun MainContent(navController: NavController,movieList: List<String> = listOf(
         LazyColumn {
             items(items = movieList){
                 MovieRow(movie = it){
-                       navController.navigate(route = MovieRoutes.DetailScreen.name)
+                       movie->navController.navigate(route = MovieRoutes.DetailScreen.name+"/$movie")
                 }
             }
         }
