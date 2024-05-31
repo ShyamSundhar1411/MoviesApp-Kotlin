@@ -11,19 +11,20 @@ import com.example.moviesapp.screens.details.DetailsScreen
 import com.example.moviesapp.screens.home.HomeScreen
 
 @Composable
-fun MovieNavigation(){
+fun MovieNavigation() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = MovieRoutes.HomeScreen.name) {
-        composable(MovieRoutes.HomeScreen.name){
+        composable(MovieRoutes.HomeScreen.name) {
             HomeScreen(navController = navController)
         }
-        composable(MovieRoutes.DetailScreen.name
-        +"/{movie}",
-            arguments = listOf(navArgument(name="movie")
+        composable(
+            MovieRoutes.DetailScreen.name
+                    + "/{movie}",
+            arguments = listOf(navArgument(name = "movie")
             {
                 type = NavType.StringType
-            })){
-            backStackEntry ->
+            })
+        ) { backStackEntry ->
             DetailsScreen(
                 navController = navController,
                 backStackEntry.arguments?.getString("movie")

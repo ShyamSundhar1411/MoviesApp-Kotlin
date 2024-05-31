@@ -22,6 +22,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,7 +35,7 @@ fun MyApp(content: @Composable () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun MyAppPreview(){
+fun MyAppPreview() {
     MyApp {
         MovieNavigation()
     }

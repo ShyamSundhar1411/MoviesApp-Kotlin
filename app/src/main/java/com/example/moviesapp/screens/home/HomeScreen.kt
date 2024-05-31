@@ -1,6 +1,5 @@
 package com.example.moviesapp.screens.home
 
-import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -20,36 +19,39 @@ import com.example.moviesapp.routes.MovieRoutes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navController: NavController){
+fun HomeScreen(navController: NavController) {
     Scaffold(
         topBar = {
             TopAppBar(title = {
                 Text(text = "MoviesApp", textAlign = TextAlign.Center)
             })
         }
-    ) {
-            innerPadding -> Box(
-        modifier = Modifier.padding(innerPadding)
-    ){
-        MainContent(navController = navController)
-    }
+    ) { innerPadding ->
+        Box(
+            modifier = Modifier.padding(innerPadding)
+        ) {
+            MainContent(navController = navController)
+        }
     }
 }
+
 @Composable
-fun MainContent(navController: NavController,movieList: List<String> = listOf(
-    "Avatar",
-    "300",
-    "Harry Potter",
-    "Life",
-    "Ghost of Tsushima",
-    "Boku No Hero Academia",
-    "Shingeki No Kyojin",
-)){
+fun MainContent(
+    navController: NavController, movieList: List<String> = listOf(
+        "Avatar",
+        "300",
+        "Harry Potter",
+        "Life",
+        "Ghost of Tsushima",
+        "Boku No Hero Academia",
+        "Shingeki No Kyojin",
+    )
+) {
     Column(modifier = Modifier.padding(12.dp)) {
         LazyColumn {
-            items(items = movieList){
-                MovieRow(movie = it){
-                       movie->navController.navigate(route = MovieRoutes.DetailScreen.name+"/$movie")
+            items(items = movieList) {
+                MovieRow(movie = it) { movie ->
+                    navController.navigate(route = MovieRoutes.DetailScreen.name + "/$movie")
                 }
             }
         }
