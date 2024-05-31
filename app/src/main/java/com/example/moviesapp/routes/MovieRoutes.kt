@@ -1,10 +1,10 @@
-package com.example.moviesapp.navigation
+package com.example.moviesapp.routes
 
-enum class MovieScreens{
+enum class MovieRoutes{
     HomeScreen,
     DetailScreen;
     companion object{
-        fun fromRoute(route: String?): MovieScreens = when (
+        fun fromRoute(route: String?): MovieRoutes = when (
             route?.substringBefore("/")){
             HomeScreen.name -> HomeScreen
             DetailScreen.name -> DetailScreen
