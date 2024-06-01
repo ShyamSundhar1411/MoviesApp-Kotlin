@@ -15,6 +15,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.moviesapp.components.MovieRow
+import com.example.moviesapp.model.Movie
+import com.example.moviesapp.model.getMovies
 import com.example.moviesapp.routes.MovieRoutes
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -37,15 +39,8 @@ fun HomeScreen(navController: NavController) {
 
 @Composable
 fun MainContent(
-    navController: NavController, movieList: List<String> = listOf(
-        "Avatar",
-        "300",
-        "Harry Potter",
-        "Life",
-        "Ghost of Tsushima",
-        "Boku No Hero Academia",
-        "Shingeki No Kyojin",
-    )
+    navController: NavController, movieList: List<Movie> = getMovies()
+
 ) {
     Column(modifier = Modifier.padding(12.dp)) {
         LazyColumn {

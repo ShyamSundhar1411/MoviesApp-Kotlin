@@ -21,15 +21,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
+import com.example.moviesapp.model.Movie
 
 @Composable
-fun MovieRow(movie:String, onItemClick: (String) -> Unit = {}){
+fun MovieRow(movie:Movie, onItemClick: (String) -> Unit = {}){
     Card(modifier = Modifier
         .padding(4.dp)
         .fillMaxWidth()
         .height(130.dp)
         .clickable {
-                   onItemClick(movie)
+                   onItemClick(movie.id)
         }
         ,
         shape = RoundedCornerShape(corner = CornerSize(16.dp)),
@@ -47,7 +48,7 @@ fun MovieRow(movie:String, onItemClick: (String) -> Unit = {}){
                 Icon(imageVector = Icons.Default.AccountBox, contentDescription = "Movie Image" )
 
             }
-            Text(text = movie);
+            Text(text = movie.title);
         }
     }
 }
