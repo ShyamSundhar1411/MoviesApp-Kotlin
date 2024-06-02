@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -18,6 +19,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -52,7 +54,7 @@ fun MovieRow(movie:Movie = getMovies()[0], onItemClick: (String) -> Unit = {}){
     Card(modifier = Modifier
         .padding(4.dp)
         .fillMaxWidth()
-        .height(130.dp)
+
         .clickable {
             onItemClick(movie.id)
         }
@@ -85,7 +87,7 @@ fun MovieRow(movie:Movie = getMovies()[0], onItemClick: (String) -> Unit = {}){
                 Text(text = "Director: ${movie.director}", style = MaterialTheme.typography.labelSmall);
                 Text(text = "Released: ${movie.year}",style = MaterialTheme.typography.labelSmall);
                 AnimatedVisibility(visible = isExpanded.value) {
-                    Column(){
+                    Column {
                         Text(
                             buildAnnotatedString {
                                 withStyle(
@@ -105,8 +107,13 @@ fun MovieRow(movie:Movie = getMovies()[0], onItemClick: (String) -> Unit = {}){
                                 ){
                                     append(movie.plot)
                                 }
-                            }
+                            }, modifier = Modifier.padding(6.dp)
+
                         )
+                        Divider()
+                        Text(text = "Director: ${movie.director}", style = MaterialTheme.typography.labelSmall)
+                        Text(text = "Actors: ${movie.actors}", style = MaterialTheme.typography.labelSmall)
+                        Text(text = "Rating: ${movie.rating}", style = MaterialTheme.typography.labelSmall)
                     }
                 }
 
